@@ -1,0 +1,12 @@
+# Cloudflare Pages redirects
+# Syntax: /source /destination [status]
+
+# Download APK
+/download /MoneyCode-1.2.3-release.apk 200
+
+# Legacy paths
+/app / 301
+/index / 301
+
+# Trailing slash normalization
+/index.html / 301

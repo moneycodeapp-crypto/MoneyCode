@@ -1,0 +1,45 @@
+Third-party software in MoneyCode
+=================================
+
+jsQR 1.4.0 (file: jsQR.js)
+  Source:   npm package "jsqr", version 1.4.0, file dist/jsQR.js, unmodified
+            (project: https://github.com/cozmo/jsQR)
+  License:  Apache License, Version 2.0. Full text: jsQR-LICENSE.txt (the package's own
+            LICENSE file, unmodified, 11,358 bytes), also at
+            https://www.apache.org/licenses/LICENSE-2.0
+  SHA-256:  vEDIoVGWI2sjFNsIVvcsoLSZgM1UE7jIUqc0n1/uCFk= (base64), 256,885 bytes
+  Used for: reading the device-pairing QR code from camera frames, on the phone only.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+  this file except in compliance with the License. Unless required by applicable law
+  or agreed to in writing, software distributed under the License is distributed on
+  an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+  implied. See the License for the specific language governing permissions and
+  limitations under the License.
+
+-----------------------------------------------------------------
+
+sql.js (file: sql-asm.js)
+  Source:   https://github.com/sql-js/sql.js (SQLite compiled to JavaScript via Emscripten)
+  License:  MIT License (sql.js wrapper) and Public Domain (SQLite C engine: https://sqlite.org/copyright.html)
+  Used for: local on-device relational database storage.
+
+  Copyright (c) 2015 Ophir LOJKINE and sql.js contributors
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.

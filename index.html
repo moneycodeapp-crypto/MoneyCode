@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MoneyCode — Personal Sovereign Financial Intelligence</title>
+  <meta name="description" content="MoneyCode — Personal Sovereign Financial Intelligence. سجّل مصاريفك وديونك وحساباتك بالصوت أو بكتابة جملة عامية في ثوانٍ، بدون إنترنت وبخصوصية تامة على هاتفك." />
+<link rel="canonical" href="https://moneycodeapp.com/" />
+<meta property="og:url" content="https://moneycodeapp.com/" />
+<meta property="og:site_name" content="MoneyCode" />
+  <meta name="keywords" content="موني كود, MoneyCode, دفتر ديون, محاسب ذكي, برنامج حسابات بدون انترنت, محاسبة مقاولات, حسابات شخصية, تطبيق مصاريف, كشف حساب PDF" />
+  <style>
+    :root {
+      --emerald: #064e3b;
+      --emerald-light: #047857;
+      --gold: #d97706;
+      --gold-soft: #fef3c7;
+      --sand: #f4f1ea;
+      --ink: #111827;
+      --muted: #4b5563;
+      --card: #ffffff;
+      --line: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+      background: var(--sand);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--emerald) 0%, #022c22 100%);
+      color: #fff;
+      padding: 48px 20px 56px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid #f59e0b;
+      color: #fde68a;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      margin: 0 auto 12px;
+      font-size: clamp(26px, 5vw, 40px);
+      max-width: 780px;
+      line-height: 1.3;
+    }
+    .hero p {
+      margin: 0 auto 26px;
+      max-width: 660px;
+      font-size: 17px;
+      opacity: 0.92;
+    }
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .cta-box {
+      background: var(--card);
+      color: var(--ink);
+      border-radius: 18px;
+      padding: 24px;
+      max-width: 760px;
+      margin: -34px auto 32px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--line);
+    }
+    .cta-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--emerald);
+      text-align: center;
+    }
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .store-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--emerald);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .store-link:hover { background: var(--emerald-light); transform: translateY(-1px); }
+    .store-link.secondary {
+      background: var(--sand);
+      color: var(--emerald);
+      border: 1px solid var(--emerald);
+    }
+    .direct-activation-hint {
+      background: var(--gold-soft);
+      border: 1px solid #f59e0b;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 14.5px;
+      text-align: center;
+    }
+    .direct-activation-hint strong { color: #92400e; display: block; margin-bottom: 6px; font-size: 15px; }
+    .wa-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #16a34a;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13.5px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 24px;
+      color: var(--emerald);
+      margin: 40px 0 8px;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      margin: 0 auto 24px;
+      max-width: 640px;
+    }
+    /* Interactive Simulator */
+    .sim-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      max-width: 760px;
+      margin: 0 auto 36px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .sim-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .sim-chip {
+      background: var(--sand);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .sim-chip:hover, .sim-chip.active {
+      background: var(--emerald);
+      color: #fff;
+      border-color: var(--emerald);
+    }
+    .sim-output {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .sim-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed #e2e8f0;
+      font-size: 14px;
+    }
+    .sim-row:last-child { border-bottom: none; }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .feature-card h3 {
+      margin: 0 0 8px;
+      color: var(--emerald);
+      font-size: 17px;
+    }
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 32px 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 48px;
+    }
+    footer a {
+      color: #fde68a;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="container">
+      <span class="hero-badge">يعمل 100% بدون إنترنت • خصوصية سيادية على هاتفك</span>
+      <h1>موني كود (MoneyCode)<br>محاسبك الذكي بالصوت وباللهجة العامية</h1>
+      <p>قل وداعاً للجداول المعقدة. تحدّث أو اكتب جملتك اليومية كما تتكلم في السوق أو العمل، وسيحوّلها «موني كود» فوراً إلى قيد محاسبي مزدوج متوازن، ويتابع ديونك وسيولتك وتقاريرك بصيغة PDF. ☁️ ويدعم نسخاً احتياطية سحابية مشفرة (Zero-Knowledge AES-256) اختيارية.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="cta-box">
+      <h2 class="cta-title">احصل على تطبيق موني كود الآن</h2>
+      <div class="store-grid">
+        <a class="store-link" href="https://play.google.com/store/apps/details?id=com.moneycode.sovereign" target="_blank" rel="noopener" title="متجر جوجل بلاي">▶ Google Play Store</a>
+        <a class="store-link" href="app/index.html?try=1" title="جرّب قبل أن تثق — افتح التطبيق في المتصفح فوراً بدون إنترنت">⚡ جرّب في المتصفح فوراً (iOS & Web PWA)</a>
+        <a class="store-link" href="#appgallery" title="متجر هواوي">AppGallery</a>
+        <a class="store-link secondary" href="MoneyCode-1.2.3-release.apk" download="MoneyCode-1.2.3-release.apk" title="تحميل مباشر APK">⬇ تحميل مباشر لأندرويد (APK v1.2.3)</a>
+      </div>
+
+      <div class="direct-activation-hint">
+        <strong>💡 كيف تحصل على النسخة الكاملة أو رمز التفعيل؟</strong>
+        يمكنك الحصول على التطبيق والترقية من <strong>متجر جوجل بلاي (Google Play Store)</strong>.<br>
+        وفي حال <strong>لا توجد لديك بطاقة للشراء عبر الإنترنت</strong>، يمكنك الحصول على رمز التفعيل لجهازك مباشرة بالتواصل معنا عبر واتساب أو الاتصال على:
+        <div class="wa-btns">
+          <a class="wa-btn" href="https://wa.me/967770550110?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%B1%D9%85%D8%B2%20%D8%AA%D9%81%D8%B9%D9%8A%D9%84%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D9%85%D9%88%D9%86%D9%8A%20%D9%83%D9%88%D8%AF" target="_blank" rel="noopener">💬 واتساب: <span dir="ltr">+967 770 550 110</span></a>
+          <a class="wa-btn" href="https://wa.me/96899323110?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%B1%D9%85%D8%B2%20%D8%AA%D9%81%D8%B9%D9%8A%D9%84%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D9%85%D9%88%D9%86%D9%8A%20%D9%83%D9%88%D8%AF" target="_blank" rel="noopener">💬 واتساب: <span dir="ltr">+968 993 23 110</span></a>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">جرّب ذكاء «موني كود» بنفسك الآن</h2>
+    <p class="section-sub">اضغط على أي جملة عامية لترى كيف يفهمها المحرك المحاسبي في أجزاء من الثانية دون تعبئة حقول:</p>
+
+    <div class="sim-card">
+      <div class="sim-chips" id="simChips">
+        <button type="button" class="sim-chip active" data-idx="0">«سلفت خالد 2,000 ريال لموعد الأسبوع الجاي»</button>
+        <button type="button" class="sim-chip" data-idx="1">«دفعت للمقاول سعد 12,000 ريال من البنك»</button>
+        <button type="button" class="sim-chip" data-idx="2">«شريت بضاعة بـ 500 دولار كاش»</button>
+        <button type="button" class="sim-chip" data-idx="3">«قبضت إيجار الشقة 1,800 ريال»</button>
+      </div>
+      <div class="sim-output" id="simOutput"></div>
+    </div>
+
+    <h2 class="section-title">مصمم لـ 8 واقعيات أعمال وحياة يومية</h2>
+    <p class="section-sub">يتشكّل دليل الحسابات والمصطلحات تلقائياً ليناسب طبيعة عملك:</p>
+
+    <div class="grid-3">
+      <div class="feature-card">
+        <h3>🏗️ المقاولون والمهندسون</h3>
+        <p>متابعة دفعات مقاولي الباطن، العُهد، المستخلصات، وشراء المعدات بالتمويل أو الكاش مع كشف حساب فوري لكل مقاول.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🏪 التجار وأصحاب المحلات</h3>
+        <p>دفتر ديون ذكي للعملاء والموردين، تعدد العملات وحساب فروق الصرف تلقائياً، وإقران الأجهزة عبر QR أو NFC لمطابقة الحسابات.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🚚 المناديب والسائقون</h3>
+        <p>ضبط مبالغ التحصيل عند الاستلام (COD)، مصاريف الوقود والصيانة، ومعرفة صافي ربح المشاوير اليومي بدقة.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🏢 ملاك العقارات والمؤجرون</h3>
+        <p>جدولة الإيجارات الدورية، تنبيهات الاستحقاق المتأخرة، وتجهيز رسائل التذكير الرسمية للمستأجرين بضغطة زر.</p>
+      </div>
+      <div class="feature-card">
+        <h3>💼 المستقلون والموظفون</h3>
+        <p>مراقبة الميزانية الشهرية، رادار السيولة، المراجعة الأسبوعية والشهرية، وحساب زكاة المال والمدخرات تلقائياً.</p>
+      </div>
+      <div class="feature-card">
+        <h3>👥 المجموعات المالية (القطّة)</h3>
+        <p>تقسيم مصاريف السفر أو السكن المشترك أو الشراكات بسهولة، مع ترحيل حصتك فقط إلى دفترك الشخصي.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="agents">نقاط التفعيل المعتمدة والوكلاء المحليون</h2>
+    <p class="section-sub">لمن لا يملك بطاقة للشراء عبر الإنترنت، يمكنك الحصول على رمز التفعيل الفوري نقداً أو بالتحويل المحلي (الكريمي / جوالي / ون كاش / تحويل بنكي) عبر قنواتنا الرسمية ومكاتب المحاسبة المعتمدة:</p>
+
+    <div class="grid-3">
+      <div class="feature-card">
+        <h3>🇾🇪 الجمهورية اليمنية (صنعاء وعدن وكافة المحافظات)</h3>
+        <p>التفعيل الفوري عبر التحويل المحلي (مصرف الكريمي، جوالي، ون كاش، فلوسك) أو نقاط البيع المعتمدة.<br><strong>واتساب وهاتف:</strong> <span dir="ltr">+967 770 550 110</span></p>
+      </div>
+      <div class="feature-card">
+        <h3>🇴🇲 سلطنة عُمان ودول الخليج العربي</h3>
+        <p>التفعيل الفوري عبر التحويل البنكي المباشر أو المحافظ المحلية، مع دعم باقات الشركات والمناديب.<br><strong>واتساب وهاتف:</strong> <span dir="ltr">+968 993 23 110</span></p>
+      </div>
+      <div class="feature-card">
+        <h3>🤝 انضم كوكيل أو موزع معتمد</h3>
+        <p>لمكاتب المحاسبة ومحلات الهواتف والبرمجة والمدربين الماليين: احصل على خصم جملة يصل إلى 35% بنظام الرصيد المسبق (Prepaid) لإصدار رموز التفعيل لعملائك فوراً.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 موني كود (MoneyCode) — طه الدقيل. جميع الحقوق محفوظة.</p>
+    <p>
+      <a href="promo-video.html">🎬 العرض المتحرك (35 ثانية)</a> |
+      <a href="trading-radar.html">🧭 رادار المخاطر والتنبؤ (AI Trading Radar)</a> |
+      <a href="marketing-hub.html">📈 مركز التسويق والوكلاء (Marketing Hub)</a> |
+      <a href="guide.html">📖 دليل الاستخدام والأمثلة (User Guide)</a> |
+      <a href="privacy.html">سياسة الخصوصية (Privacy Policy)</a> |
+      <a href="terms.html">شروط الاستخدام (Terms of Use)</a> |
+      <a href="delete-data.html">حذف البيانات (Data Deletion)</a> |
+      <a href="links.html">🔗 Links (Link in Bio)</a>
+    </p>
+    <p class="social-links">
+      <a href="https://wa.me/967770550110" dir="ltr">WhatsApp</a> ·
+      <a href="https://t.me/MoneyCodeApp" dir="ltr">Telegram</a> ·
+      <a href="https://x.com/MoneyCodeApp" dir="ltr">X</a> ·
+      <a href="https://instagram.com/MoneyCodeApp" dir="ltr">Instagram</a> ·
+      <a href="https://tiktok.com/@MoneyCodeApp" dir="ltr">TikTok</a> ·
+      <a href="https://youtube.com/@MoneyCodeApp" dir="ltr">YouTube</a> ·
+      <a href="https://facebook.com/MoneyCodeApp" dir="ltr">Facebook</a> ·
+      <a href="https://linkedin.com/company/moneycodeapp" dir="ltr">LinkedIn</a> ·
+      <a href="https://moneycodeapp.com" dir="ltr">moneycodeapp.com</a>
+    </p>
+  </footer>
+
+  <script>
+    (function () {
+      var examples = [
+        {
+          kind: 'إقراض / دين لنا (Lend)',
+          debit: 'ذمم مدينة — خالد (+2,000 ر.س)',
+          credit: 'الصندوق النقدي (-2,000 ر.س)',
+          note: '🔔 يجدول تذكيراً تلقائياً بعد 7 أيام لتحصيل المبلغ من خالد.'
+        },
+        {
+          kind: 'مصروف تشغيل / مقاول باطن (Expense)',
+          debit: 'مصروفات المقاولات — سعد (+12,000 ر.س)',
+          credit: 'الحساب البنكي (-12,000 ر.س)',
+          note: '📊 يحدّث رادار السيولة وكشف حساب المقاول سعد فوراً.'
+        },
+        {
+          kind: 'مشتريات بعملة أجنبية (Multi-Currency)',
+          debit: 'المشتريات والبضاعة (+500 USD / 1,875 ر.س)',
+          credit: 'صندوق العملات الأجنبية (-500 USD)',
+          note: '💱 يحفظ القيد بالدولار ويقيّمه بالعملة الأساسية مع تتبع فروق الصرف.'
+        },
+        {
+          kind: 'إيراد إيجارات (Income)',
+          debit: 'الصندوق النقدي (+1,800 ر.س)',
+          credit: 'إيرادات العقارات والإيجارات (+1,800 ر.س)',
+          note: '🧾 يصدر سند قبض وكشف حساب PDF جاهز للمشاركة عبر واتساب.'
+        }
+      ];
+      var out = document.getElementById('simOutput');
+      function renderSim(idx) {
+        var ex = examples[idx] || examples[0];
+        out.innerHTML =
+          '<div class="sim-row"><strong>نوع الحركة المستنتج:</strong><span>' + ex.kind + '</span></div>' +
+          '<div class="sim-row"><strong>الطرف المدين (Debit):</strong><span style="color:#047857;font-weight:700">' + ex.debit + '</span></div>' +
+          '<div class="sim-row"><strong>الطرف الدائن (Credit):</strong><span style="color:#b45309;font-weight:700">' + ex.credit + '</span></div>' +
+          '<div class="sim-row"><strong>ذكاء المحاسب في جيبك:</strong><span>' + ex.note + '</span></div>';
+      }
+      renderSim(0);
+      document.getElementById('simChips').addEventListener('click', function (ev) {
+        var btn = ev.target.closest('[data-idx]');
+        if (!btn) return;
+        Array.prototype.forEach.call(document.querySelectorAll('.sim-chip'), function (c) { c.classList.remove('active'); });
+        btn.classList.add('active');
+        renderSim(Number(btn.getAttribute('data-idx')));
+      });
+    })();
+  </script>
+</body>
+</html>

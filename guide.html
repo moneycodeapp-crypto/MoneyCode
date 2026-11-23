@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>دليل الاستخدام الشامل والأمثلة — تطبيق موني كود (MoneyCode User Guide)</title>
+  <style>
+    :root { --emerald: #064e3b; --emerald-light: #047857; --gold: #d97706; --gold-soft: #fef3c7; --sand: #f4f1ea; --ink: #111827; --muted: #4b5563; --card: #ffffff; --line: #e5e7eb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; background: var(--sand); color: var(--ink); line-height: 1.75; }
+    header { background: var(--emerald); color: #fff; padding: 32px 20px; text-align: center; }
+    header h1 { margin: 0 0 8px; font-size: 26px; }
+    header p { margin: 0; opacity: 0.92; font-size: 15px; }
+    main { max-width: 920px; margin: 24px auto; padding: 0 16px 48px; }
+    .search-bar { margin-bottom: 20px; }
+    .search-bar input { width: 100%; padding: 14px 18px; border-radius: 14px; border: 2px solid var(--emerald); font-size: 15px; background: #fff; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+    h2 { color: var(--emerald); font-size: 20px; margin-top: 0; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+    h3 { color: var(--emerald-light); font-size: 16.5px; margin: 16px 0 6px; }
+    .phrase-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin-top: 10px; }
+    .phrase { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 10px 14px; font-weight: 600; font-size: 14px; color: var(--ink); }
+    .phrase small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; margin-top: 3px; }
+    .faq-item { border-bottom: 1px dashed var(--line); padding: 12px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-weight: 800; color: var(--emerald); margin-bottom: 4px; }
+    footer { text-align: center; color: var(--muted); font-size: 13.5px; padding: 24px; border-top: 1px solid var(--line); }
+    a { color: var(--emerald); font-weight: 700; text-decoration: none; }
+    @media print { .search-bar, footer { display: none; } body { background: #fff; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📖 دليل الاستخدام الشامل وكتاب الأمثلة — موني كود</h1>
+    <p>تعلم كيف تدير حساباتك وديونك وعملاتك بالصوت وباللهجة العامية في دقائق</p>
+  </header>
+  <main>
+    <div class="search-bar">
+      <input id="guideSearch" type="search" placeholder="ابحث في الدليل (مثال: عملات، إقران، استرجاع، مقاولات، زكاة…)" aria-label="بحث في دليل الاستخدام" />
+    </div>
+
+    <div class="card guide-section">
+      <h2>1. البداية السريعة في 60 ثانية</h2>
+      <ol>
+        <li><strong>اختر طابع دفاترك وعملتك:</strong> عند فتح التطبيق لأول مرة، اختر شخصيتك (تاجر، مقاول، مندوب، مالك عقار، مستقل، موظف، أو طالب) ليضبط التطبيق دليل حساباتك تلقائياً.</li>
+        <li><strong>تحدث أو اكتب جملتك اليومية:</strong> في شاشة «المحادثة»، اضغط زر الميكروفون 🎙️ أو اكتب جملتك بالعامية ثم راجع بطاقة القيد واضغط <strong>«اعتماد القيد ✓»</strong>.</li>
+        <li><strong>تابع السيولة والديون:</strong> افتح تبويب «لوحة القيادة» و«الحسابات» لمعرفة أرصدتك ومواعيد التحصيل والسداد.</li>
+      </ol>
+    </div>
+
+    <div class="card guide-section">
+      <h2>2. قاموس الجمل العامية الجاهزة (قلها أو اكتبها كما هي)</h2>
+      <div class="phrase-list">
+        <div class="phrase">«دفعت 1500 ريال إيجار المحل كاش»<small>مصروف إيجارات من الصندوق النقدي</small></div>
+        <div class="phrase">«سلفت خالد 2000 ريال لموعد الأسبوع الجاي»<small>قرض/دين لنا مع تذكير استحقاق بعد 7 أيام</small></div>
+        <div class="phrase">«حصلت من خالد 800 ريال في البنك»<small>تحصيل دفعة من دين خالد وإيداعها بالبنك</small></div>
+        <div class="phrase">«استلفت من سعد 3000 ريال كاش»<small>دين علينا لسعد يدخل في الصندوق</small></div>
+        <div class="phrase">«سددت إلى سعد 1000 ريال من البنك»<small>سداد جزء من دين سعد خصماً من البنك</small></div>
+        <div class="phrase">«صرفت 500 دولار إلى ريال»<small>صرف عملة مع حساب أرباح/خسائر الصرف تلقائياً</small></div>
+        <div class="phrase">«شريت معدة بـ 100 ألف دفعت 30 ألف كاش والباقي 70 ألف تمويل»<small>قيد أصول مركب (نقدي + ذمم تمويل)</small></div>
+        <div class="phrase">«سددت لمقاولي الباطن 20000 منها 12000 لخالد و 8000 لسعد»<small>قيد مركب يوزع الدفعة على حساب كل مقاول</small></div>
+        <div class="phrase">«رصيد افتتاحي 5000 كاش و 10000 بنك»<small>رصيد افتتاحي مركب لعدة حسابات في جملة واحدة</small></div>
+        <div class="phrase">«حولت 5000 من البنك للصندوق وسددت منها 2000 لخالد»<small>تحويل وسداد مديونية في قيد مركب واحد</small></div>
+        <div class="phrase">«صرفت 100 دولار بـ 375 ريال وسددت منها 200 لسعد»<small>صرف عملة أجنبية وسداد مورد بقيد مركب واحد</small></div>
+      </div>
+    </div>
+
+    <div class="card guide-section">
+      <h2>3. إقران الأجهزة ومطابقة الحسابات بدون إنترنت (QR &amp; NFC)</h2>
+      <p>لمطابقة الديون والحسابات بين هاتفك وهاتف شريكك أو عميلك وجهاً لوجه بدون إنترنت:</p>
+      <ol>
+        <li>في تبويب <strong>الحسابات</strong>، افتح حساب شريكك وأضف <strong>رمز جهازه</strong> (12 حرفاً)، ويضيف هو رمز جهازك في حسابك لديه.</li>
+        <li>افتح <strong>الإعدادات ← اقتران جهاز</strong> واضغط <strong>«ابدأ جلسة اقتران»</strong>.</li>
+        <li>قرّب الهاتفين عبر <strong>NFC</strong> أو امسح رمز <strong>QR</strong> بالكاميرا لمقارنة الحركات المشتركة واعتماد القيود الناقصة بضغطة زر.</li>
+      </ol>
+    </div>
+
+    <div class="card guide-section">
+      <h2>4. التفعيل، النسخ الاحتياطي المشفر، ونقل الهاتف</h2>
+      <h3>كيف تحصل على رمز التفعيل؟</h3>
+      <p>يمكنك الحصول على التطبيق والترقية من <strong>متجر Google Play Store</strong>، وفي حال لا توجد لديك بطاقة للشراء عبر الإنترنت يمكنك طلب رمز التفعيل مباشرة بالتواصل عبر واتساب: <span dir="ltr">+967770550110</span> أو <span dir="ltr">+96899323110</span>، ثم لصق الرمز في نافذة التفعيل ليُفتح الحساب فوراً.</p>
+      <h3>كيف تنقل رخصتك إلى هاتف جديد؟</h3>
+      <ul>
+        <li><strong>إذا كان هاتفك القديم يعمل:</strong> افتح <em>الإعدادات ← خطة الحساب والتفعيل ← نقل لهاتف جديد</em>، وأدخل رمز هاتفك الجديد لتوليد شهادة النقل (<code>TRANSFER-...</code>).</li>
+        <li><strong>إذا تلف هاتفك القديم:</strong> استعد نسختك الاحتياطية المشفرة على هاتفك الجديد، وسيظهر لك تلقائياً زر استرداد الرخصة من الدفتر المستعاد.</li>
+      </ul>
+    </div>
+
+    <div class="card guide-section">
+      <h2>5. الأسئلة الشائعة (FAQ)</h2>
+      <div class="faq-item">
+        <div class="faq-q">هل تضيع بياناتي إذا انتهى الاشتراك السنوي؟</div>
+        <div>أبداً. دفاترك ملكك للأبد؛ حتى بعد انتهاء الاشتراك السنوي يبقى عرض الحسابات، تصدير النسخ الاحتياطية، وتحصيل وسداد الديون القائمة مفتوحاً دائماً دون قيود.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">كيف أحمي دفاتري من الضياع في حال تلف الهاتف؟</div>
+        <div>واظب على تصدير نسخة احتياطية مشفرة من (الإعدادات ← تصدير نسخة احتياطية) واحتفظ بالملف في واتساب أو بريدك الإلكتروني مع تذكر كلمة المرور.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">كيف أعدل أو أحذف قيداً خاطئاً؟</div>
+        <div>من تبويب «الدليل»، اضغط على القيد لتعديله أو حذفه، وسيقوم المحرك بعكس أثره المحاسبي وتحديث الأرصدة تلقائياً.</div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    © 2026 موني كود (MoneyCode) | <a href="index.html">الصفحة الرئيسية</a> | <a href="privacy.html">سياسة الخصوصية</a> | <a href="terms.html">شروط الاستخدام</a>
+  </footer>
+  <script>
+    document.getElementById('guideSearch').addEventListener('input', function (e) {
+      var q = e.target.value.trim().toLowerCase();
+      Array.prototype.forEach.call(document.querySelectorAll('.guide-section'), function (sec) {
+        sec.style.display = (!q || sec.textContent.toLowerCase().indexOf(q) >= 0) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

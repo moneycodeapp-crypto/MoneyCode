@@ -1,0 +1,33 @@
+{
+  "id": "com.moneycode.sovereign.pwa",
+  "name": "موني كود (MoneyCode) — محاسب ذكي ودفتر ديون",
+  "short_name": "موني كود",
+  "description": "محاسبك الشخصي والتجاري بالصوت وباللهجة العامية — يعمل 100% بدون إنترنت وبخصوصية تامة على جهازك.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f1ea",
+  "theme_color": "#064e3b",
+  "categories": [
+    "finance",
+    "business",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

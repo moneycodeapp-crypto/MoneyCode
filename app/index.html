@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+<meta name="description" content="MoneyCode — Personal Sovereign Financial Intelligence. مدير مالي سيادي شخصي. تطبيق محاسبي مزدوج متوازن يعمل محلياً دون إنترنت." />
+<meta name="theme-color" content="#064e3b" />
+<meta name="color-scheme" content="light dark" />
+<title>MoneyCode — Personal Sovereign Financial Intelligence</title>
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('rohapp.theme') || 'light';
+      var allowed = ['light','dark','system','ocean','ocean-dark','burgundy','burgundy-dark','purple','purple-dark','teal','teal-dark','amber','amber-dark','royal-gold-dark','cyberpunk-dark'];
+      if (allowed.indexOf(t) === -1) t = 'light';
+      var mode = t === 'system' ? ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light') : (/dark$/.test(t) ? 'dark' : (t === 'dark' ? 'dark' : 'light'));
+      var accent = String(t).replace(/-dark$/, '');
+      if (accent !== 'ocean' && accent !== 'burgundy' && accent !== 'purple' && accent !== 'amber' && accent !== 'teal' && accent !== 'royal-gold' && accent !== 'cyberpunk') accent = 'emerald';
+      document.documentElement.setAttribute('data-theme', mode);
+      document.documentElement.setAttribute('data-accent', accent);
+      var mc = { 'emerald:light':'#064e3b','emerald:dark':'#0a1f18','ocean:light':'#1d6fa5','ocean:dark':'#07192b','burgundy:light':'#7f1d1d','burgundy:dark':'#22080d','purple:light':'#6d28d9','purple:dark':'#150a2a','amber:dark':'#1a1208','teal:light':'#0d9488','teal:dark':'#021a19','amber:light':'#d97706','amber:dark':'#1c0a00','royal-gold:dark':'#0c0902','cyberpunk:dark':'#070514' }[accent + ':' + mode];
+      var mt = document.querySelector('meta[name="theme-color"]');
+      if (mt && mc) mt.setAttribute('content', mc);
+      var fontScale = localStorage.getItem('rohapp.fontScale');
+      if (fontScale) document.documentElement.style.setProperty('--font-scale', fontScale);
+    } catch (e) {}
+  })();
+</script>
+<script src="riyal-font.js?v=4.0.323" defer></script>
+<link rel="stylesheet" href="styles.css?v=4.0.455" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" type="image/png" href="icon-192.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="موني كود" />
+</head>
+<body>
+<a href="#views" class="skip-link">تخطي إلى المحتوى الرئيسي</a>
+<div id="bootLoading" class="boot-loading" role="status" aria-live="polite">
+  <div class="boot-spinner"></div>
+  <div class="boot-text">جاري تحميل بياناتك…</div>
+</div>
+<div id="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" data-action="bot-tour" role="button" tabindex="0" aria-label="جولة في البوت" style="cursor:pointer" title="جولة في البوت"><svg viewBox="0 0 48 48" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6H33A6 6 0 0 1 39 12V21A6 6 0 0 1 33 27H22A6 6 0 0 1 16 21V12A6 6 0 0 1 22 6Z" stroke="#fff" stroke-width="4.4"/><path d="M27.5 27C27.5 37 20 41.5 7 41" stroke="#fff" stroke-width="4.4"/><path class="brand-eye-left" d="M22.5 13H27" stroke="#F59E0B" stroke-width="3.6"/><path class="brand-eye-right" d="M29 13H32.5" stroke="#F59E0B" stroke-width="3.6"/><path class="brand-mouth" d="M22.5 20H32.5" stroke="#F59E0B" stroke-width="3.6"/></svg></span>
+      <h1 class="brand-text">موني كود<small>أول كاتب حسابات بالذكاء الاصطناعي في العالم</small></h1>
+    </div>
+    <div class="topbar-actions">
+      <button class="ask-btn" data-action="global-search" title="اسأل" aria-label="اسأل: بحث في كل التطبيق"><svg class="ui-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="21" cy="21" r="14"/><path d="M31.5 31.5L42 42"/></svg></button>
+      <button id="topMenuBtn" class="icon-btn row-menu-btn" data-action="top-menu" title="القائمة" aria-label="القائمة" aria-haspopup="menu" aria-expanded="false">⋮</button>
+    </div>
+  </header>
+
+  <div id="saveBanner" class="save-banner" role="alert" hidden></div>
+
+  <main id="views">
+    <div id="globalSearchPanel" class="global-search" hidden>
+      <div class="global-search-box">
+        <input id="globalSearch" type="search" aria-label="بحث في القيود والحسابات والاستحقاقات والمحادثة والعملات والإعدادات" placeholder="اسأل عن قيد أو حساب…" autocomplete="off" />
+        <input id="globalSearchDate" class="global-search-date" type="date" tabindex="-1" aria-hidden="true" />
+        <button class="global-search-btn" type="button" data-action="search-voice" aria-label="بحث صوتي" title="بحث صوتي"><svg class="ui-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="5" width="14" height="24" rx="7"/><path d="M9 23A15 15 0 0 0 39 23M24 38V44"/></svg></button>
+        <button class="global-search-btn" type="button" data-action="search-date" aria-label="بحث بالتاريخ" title="بحث بالتاريخ"><svg class="ui-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="34" height="32" rx="5"/><path d="M7 20H41M16 5V14M32 5V14"/></svg></button>
+        <button class="global-search-btn" type="button" data-action="search-clear" aria-label="مسح أو إغلاق البحث" title="مسح أو إغلاق"><svg class="ui-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 11L37 37M37 11L11 37"/></svg></button>
+      </div>
+      <div id="globalSearchDay" class="attach-chip global-search-day" hidden></div>
+      <div id="globalResults" class="global-search-results"></div>
+    </div>
+
+    <section id="view-bot" class="view active" role="tabpanel" aria-labelledby="tab-bot" aria-hidden="false">
+      <div id="chat" class="chat" aria-live="polite"></div>
+      <div class="composer">
+        <div id="composerChips" class="chips chips-bar"></div>
+        <div id="reportChips" class="chips chips-bar" role="group" aria-label="التقارير" hidden>
+          <button type="button" class="chip" data-report="statement">كشف حساب</button>
+          <button type="button" class="chip" data-report="cashflow">التدفق النقدي</button>
+          <button type="button" class="chip" data-report="balance">الميزانية</button>
+        </div>
+        <div id="attachChip" class="attach-chip" hidden></div>
+        <div class="composer-stop-row" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+<button id="ttsStop" class="tts-stop" type="button" aria-label="إيقاف القراءة" title="إيقاف القراءة" hidden><span>إيقاف القراءة</span></button>
+<button id="typingStop" class="tts-stop" type="button" aria-label="إيقاف الكتابة" title="إيقاف الكتابة" hidden><span>إيقاف الكتابة</span></button>
+</div>
+        <div class="composer-row">
+        <button id="actionBtn" class="action-btn" aria-label="إرسال أو إدخال صوتي"><svg class="ui-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="5" width="14" height="24" rx="7"/><path d="M9 23A15 15 0 0 0 39 23M24 38V44"/></svg></button>
+        <div class="input-wrap">
+          <textarea id="input" rows="1" placeholder="اكتب قيدك… مثال: دفعت لمحمد 5000 ريال" autocomplete="off" aria-autocomplete="list" aria-controls="autocomplete"></textarea>
+          <button id="clearBtn" class="clear-btn" type="button" aria-label="مسح النص" title="مسح النص"><svg class="ui-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 11L37 37M37 11L11 37"/></svg></button>
+          <button id="formBtn" class="form-btn" type="button" aria-label="قيد بالنموذج" title="قيد بالنموذج"><svg class="ui-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6" width="32" height="36" rx="5"/><path d="M15 16H33M15 24H33M15 32H25"/></svg></button>
+          <button id="attachBtn" class="attach-btn" type="button" aria-label="إرفاق صورة" title="إرفاق صورة"><svg class="ui-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M41 22L24 39A10.5 10.5 0 0 1 9 24L26 7A7 7 0 0 1 36 17L19 34A3.5 3.5 0 0 1 14 29L30 13"/></svg></button>
+          <input id="attachInput" type="file" accept="image/*" hidden />
+          <button id="scanBtn" class="attach-btn" type="button" aria-label="مسح مستند" title="مسح مستند — تصوير إيصال أو مستند بالكاميرا لتضمينه كمرفق في القيد"><svg class="ui-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13H13L17 7H31L35 13H43V39H5Z"/><circle cx="24" cy="26" r="8"/><path d="M24 22V30M20 26H28"/></svg></button>
+          <input id="scanInput" type="file" accept="image/*" capture="environment" hidden />
+          <div id="autocomplete" class="autocomplete" role="listbox" aria-label="اقتراحات" hidden></div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section id="view-radar" class="view" role="tabpanel" aria-labelledby="tab-radar" aria-hidden="true">
+      <div id="radarBody" class="scroll-body"></div>
+    </section>
+
+    <section id="view-ledger" class="view" role="tabpanel" aria-labelledby="tab-ledger" aria-hidden="true">
+      <div id="ledgerBody" class="scroll-body"></div>
+    </section>
+
+    <section id="view-accounts" class="view" role="tabpanel" aria-labelledby="tab-accounts" aria-hidden="true">
+      <div id="accountsBody" class="scroll-body"></div>
+    </section>
+
+    <section id="view-settings" class="view" role="tabpanel" aria-hidden="true">
+      <div id="settingsBody" class="scroll-body"></div>
+    </section>
+    <section id="view-reports" class="view" role="tabpanel" aria-labelledby="tab-reports" aria-hidden="true">
+      <div id="reportsBody" class="scroll-body"></div>
+    </section>
+  </main>
+
+  <nav class="tabbar" role="tablist" aria-label="التنقل الرئيسي">
+    <button id="tab-bot" class="tab active" data-tab="bot" role="tab" aria-selected="true" aria-controls="view-bot"><span aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6H33A6 6 0 0 1 39 12V21A6 6 0 0 1 33 27H22A6 6 0 0 1 16 21V12A6 6 0 0 1 22 6Z"/><path d="M27.5 27C27.5 37 20 41.5 7 41"/><path d="M22.5 13H32.5M22.5 20H32.5"/></svg></span>المحادثة<span class="tab-badge" id="botBadge" hidden></span></button>
+    <button id="tab-radar" class="tab" data-tab="radar" role="tab" aria-selected="false" aria-controls="view-radar"><span aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M38.1 9.9A20 20 0 1 0 44 24"/><path d="M31.100 16.900A10 10 0 1 0 34 24"/><path d="M24 24L39 9"/></svg></span>لوحة القيادة<span class="tab-badge" id="radarBadge" hidden></span></button>
+    <button id="tab-accounts" class="tab" data-tab="accounts" role="tab" aria-selected="false" aria-controls="view-accounts"><span aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12V11A5 5 0 0 1 17 6H34A4 4 0 0 1 38 10V12"/><path d="M11 12H37A5 5 0 0 1 42 17V36A5 5 0 0 1 37 41H11A5 5 0 0 1 6 36V17A5 5 0 0 1 11 12Z"/><path d="M42 22H33A4.500 4.500 0 0 0 33 31H42"/></svg></span>الحسابات</button>
+    <button id="tab-ledger" class="tab" data-tab="ledger" role="tab" aria-selected="false" aria-controls="view-ledger"><span aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5H34A5 5 0 0 1 39 10V38A5 5 0 0 1 34 43H14A5 5 0 0 1 9 38V10A5 5 0 0 1 14 5Z"/><path d="M17 16H31M17 24H31M17 32H25"/></svg></span>الدليل</button>
+    <button id="tab-reports" class="tab" data-tab="reports" role="tab" aria-selected="false" aria-controls="view-reports"><span aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5H38V43L33 39L28 43L24 39L20 43L15 39L10 43Z"/><path d="M17 15H31M17 24H31"/></svg></span>التقارير</button>
+
+  </nav>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="srAnnouncer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <div id="storageFault" class="storage-fault" role="alert" hidden></div>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <span class="modal-title" id="modalTitle"></span>
+        <button id="modalClose" class="icon-btn" aria-label="إغلاق" style="background:var(--sand);color:var(--emerald);border-color:var(--line)">✕</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+</div>
+<script src="sql-asm.js" defer></script>
+<script src="trained.js?v=4.0.324" defer></script>
+<script src="vocab-seeds.js?v=4.0.324" defer></script>
+<script src="engine.js?v=4.0.517" defer></script>
+<script src="ai.js?v=4.0.334" defer></script>
+<script src="jsQR.js?v=4.0.618" defer></script>
+<script src="qr.js?v=4.0.618" defer></script>
+<script src="pairing-engine.js?v=4.0.620" defer></script>
+<script src="app.js?v=4.0.1002" defer></script>
+<script src="ios-pwa-helper.js?v=moneycode-ios-pwa-d37fe6a766"></script>
+</body>
+</html>
+
+

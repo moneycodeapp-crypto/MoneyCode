@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>العرض الترويجي المتحرك — تطبيق موني كود (MoneyCode Promo Showcase)</title>
+  <style>
+    :root { --emerald: #064e3b; --gold: #f59e0b; --sand: #f4f1ea; --ink: #111827; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; background: radial-gradient(circle at top, #047857, #022c22); color: #fff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+    .stage { width: min(420px, 94vw); background: var(--sand); color: var(--ink); border-radius: 32px; border: 6px solid rgba(255,255,255,0.2); overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
+    .topbar { background: var(--emerald); color: #fff; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 18px; }
+    .topbar span { color: #fde68a; font-size: 12px; font-weight: 700; }
+    .screen { padding: 22px 18px; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
+    .scene-badge { display: inline-block; background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; padding: 5px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 800; margin-bottom: 10px; }
+    .scene-title { font-size: 21px; font-weight: 800; color: var(--emerald); margin: 0 0 8px; }
+    .scene-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 16px; margin: 10px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+    .row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px dashed #e5e7eb; font-size: 14px; }
+    .row:last-child { border-bottom: 0; }
+    .progress-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; background: #cbd5e1; transition: all 0.3s ease; cursor: pointer; }
+    .dot.active { width: 28px; background: var(--emerald); }
+    .controls { margin-top: 18px; display: flex; gap: 10px; }
+    .btn { background: var(--gold); color: #111827; border: 0; padding: 10px 20px; border-radius: 999px; font-weight: 800; cursor: pointer; text-decoration: none; font-size: 14px; }
+    .btn.ghost { background: rgba(255,255,255,0.15); color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="topbar">
+      <div>موني كود (MoneyCode)</div>
+      <span>100% بدون إنترنت</span>
+    </div>
+    <div class="screen">
+      <div id="sceneContent"></div>
+      <div class="progress-dots" id="dots"></div>
+    </div>
+  </div>
+  <div class="controls">
+    <button type="button" class="btn" id="playPauseBtn">⏸ إيقاف مؤقت</button>
+    <a class="btn ghost" href="index.html">العودة للموقع الرئيسي</a>
+  </div>
+  <script>
+    (function () {
+      var scenes = [
+        {
+          badge: 'المشهد 1 / 5 • الإدخال الصوتي والكتابة بالعامية',
+          title: 'سجّل قيدك في 3 ثوانٍ كما تتحدث',
+          html: '<div class="scene-card"><div class="row"><strong>🎙️ قلت للبُوت:</strong><span>«سلفت خالد 2,000 ريال لموعد الأسبوع الجاي»</span></div>' +
+            '<div class="row"><strong>الطرف المدين:</strong><span style="color:#047857;font-weight:700">ذمم مدينة — خالد (+2,000 ر.س)</span></div>' +
+            '<div class="row"><strong>الطرف الدائن:</strong><span style="color:#b45309;font-weight:700">الصندوق النقدي (-2,000 ر.س)</span></div>' +
+            '<div class="row"><strong>التذكير التلقائي:</strong><span>🔔 استحقاق تحصيل بعد 7 أيام</span></div></div>'
+        },
+        {
+          badge: 'المشهد 2 / 5 • رادار السيولة والمحاسب في جيبك',
+          title: 'ملخص صباحي وتنبيهات ذكية للديون والميزانية',
+          html: '<div class="scene-card"><div class="row"><strong>💰 السيولة المتاحة:</strong><span style="color:#047857;font-weight:800">48,500 ر.س (تغطي 65 يوماً)</span></div>' +
+            '<div class="row"><strong>📌 تنبيه اليوم:</strong><span>تحصيل 2,000 ر.س من خالد مستحق اليوم</span></div>' +
+            '<div class="row"><strong>📊 ميزانية المصروفات:</strong><span>62% مستخدم — متبقي 3,800 ر.س</span></div></div>'
+        },
+        {
+          badge: 'المشهد 3 / 5 • تعدد العملات وصرف العملات',
+          title: 'أدر حساباتك بكل العملات واحسب فروق الصرف تلقائياً',
+          html: '<div class="scene-card"><div class="row"><strong>💬 كتبت:</strong><span>«صرفت 500 دولار إلى ريال بـ 1,880 ريال»</span></div>' +
+            '<div class="row"><strong>الصندوق النقدي:</strong><span style="color:#047857;font-weight:700">+1,880 ر.س</span></div>' +
+            '<div class="row"><strong>صندوق العملات:</strong><span style="color:#b45309;font-weight:700">-500 USD</span></div>' +
+            '<div class="row"><strong>أرباح الصرف المحققة:</strong><span style="color:#047857;font-weight:700">+5 ر.س (تلقائي)</span></div></div>'
+        },
+        {
+          badge: 'المشهد 4 / 5 • إقران الأجهزة عبر QR و NFC',
+          title: 'طابق حساباتك وديونك مع شريكك بدون إنترنت',
+          html: '<div class="scene-card"><div class="row"><strong>🤝 جلسة اقتران محلية:</strong><span>تشفير كامل وجهاً لوجه</span></div>' +
+            '<div class="row"><strong>قيود متطابقة:</strong><span style="color:#047857;font-weight:700">14 حركة مطابقة ✓</span></div>' +
+            '<div class="row"><strong>حركات مفقودة لديك:</strong><span>سداد 1,500 ر.س — اعتمد بضغطة زر</span></div></div>'
+        },
+        {
+          badge: 'المشهد 5 / 5 • تقارير PDF والنسخ المشفر AES-256',
+          title: 'كشوف حسابات احترافية وخصوصية سيادية 100%',
+          html: '<div class="scene-card"><div class="row"><strong>📄 التقارير الجاهزة:</strong><span>كشف حساب • ميزانية • تدفق نقدي • زكاة</span></div>' +
+            '<div class="row"><strong>🔒 النسخ الاحتياطي:</strong><span>تشفير AES-256 بمعرفة صفرية + 7 نسخ محلية</span></div>' +
+            '<div class="row"><strong>📱 المنصات:</strong><span>أندرويد (APK) + آيفون وكمبيوتر (Offline PWA)</span></div></div>'
+        }
+      ];
+      var idx = 0, playing = true, timer = null;
+      var content = document.getElementById('sceneContent');
+      var dotsBox = document.getElementById('dots');
+      function render() {
+        var s = scenes[idx];
+        content.innerHTML = '<span class="scene-badge">' + s.badge + '</span><h2 class="scene-title">' + s.title + '</h2>' + s.html;
+        dotsBox.innerHTML = scenes.map(function (_, i) {
+          return '<span class="dot' + (i === idx ? ' active' : '') + '" data-i="' + i + '"></span>';
+        }).join('');
+      }
+      function step() {
+        if (!playing) return;
+        idx = (idx + 1) % scenes.length;
+        render();
+      }
+      render();
+      timer = setInterval(step, 3800);
+      dotsBox.addEventListener('click', function (ev) {
+        var d = ev.target.closest('[data-i]');
+        if (!d) return;
+        idx = Number(d.getAttribute('data-i'));
+        render();
+      });
+      var btn = document.getElementById('playPauseBtn');
+      btn.addEventListener('click', function () {
+        playing = !playing;
+        btn.textContent = playing ? '⏸ إيقاف مؤقت' : '▶ تشغيل العرض';
+      });
+    })();
+  </script>
+</body>
+</html>

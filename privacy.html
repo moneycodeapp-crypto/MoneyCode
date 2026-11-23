@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>سياسة الخصوصية — تطبيق موني كود (MoneyCode Privacy Policy)</title>
+  <style>
+    :root { --emerald: #064e3b; --gold: #d97706; --ink: #111827; --muted: #4b5563; --bg: #f9fafb; --card: #ffffff; --line: #e5e7eb; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; }
+    header { background: var(--emerald); color: #fff; padding: 28px 20px; text-align: center; }
+    header h1 { margin: 0 0 6px; font-size: 24px; }
+    header p { margin: 0; opacity: 0.9; font-size: 14px; }
+    main { max-width: 860px; margin: 24px auto; padding: 0 16px 48px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    h2 { color: var(--emerald); font-size: 19px; margin-top: 0; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+    ul { padding-inline-start: 22px; }
+    li { margin-bottom: 8px; }
+    .badge { display: inline-block; background: #ecfdf5; color: var(--emerald); border: 1px solid #a7f3d0; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .en { direction: ltr; text-align: left; }
+    footer { text-align: center; color: var(--muted); font-size: 13px; padding: 20px; border-top: 1px solid var(--line); }
+    a { color: var(--emerald); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>سياسة الخصوصية — تطبيق موني كود (MoneyCode)</h1>
+    <p>تاريخ السريان وآخر تحديث: 23 نوفمبر 2026 | الحزمة: com.moneycode.sovereign</p>
+  </header>
+  <main>
+    <div class="card">
+      <span class="badge">خصوصية سيادية 100% على جهازك (Offline-First)</span>
+      <h2>1. المبدأ الأساسي: بياناتك لا تغادر هاتفك</h2>
+      <p>صُمم تطبيق <strong>موني كود (MoneyCode)</strong> ليعمل 100% بدون إنترنت داخل جهازك (Offline-First)، ويدعم النسخ الاحتياطي السحابي الاختياري المشفر بمعرفة صفرية (Zero-Knowledge AES-256). نحن لا نمتلك خوادم سحابية لجمع أو تخزين دفاترك المحاسبية، ولا نطلب منك إنشاء حساب سحابي، ولا نطلع على قيودك أو أرصدتك أو أسماء عملائك تحت أي ظرف.</p>
+      <ul>
+        <li><strong>التخزين المحلي:</strong> تُحفظ كافة القيود، الحسابات، الديون، والمرفقات محلياً داخل قاعدة بيانات التطبيق على هاتفك فقط (SQLite / IndexedDB).</li>
+        <li><strong>النسخ الاحتياطي السحابي الاختياري (Zero-Knowledge AES-256):</strong> يمكنك اختيارياً تصدير نسخة احتياطية مشفرة بمعيار AES-256-GCM (PBKDF2 310,000 دورة) بكلمة مرور من اختيارك وحفظها في سحابتك الخاصة أو جهازك — كلمة المرور لا تُحفظ ولا نعلمها.</li>
+        <li><strong>عدم المشاركة مع أطراف ثالثة:</strong> لا يبيع التطبيق، ولا يؤجر، ولا يشارك أي بيانات شخصية أو مالية مع أي شركات إعلانية أو جهات خارجية.</li>
+        <li><strong>خلو التطبيق من الإعلانات وأدوات التتبع:</strong> لا يحتوي التطبيق على أي حزم إعلانية أو برمجيات تتبع سلوكي خارجية.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>2. الأذونات التي يطلبها التطبيق وسبب استخدامها</h2>
+      <p>لا يطلب التطبيق أي إذن إلا عند حاجتك الفعلية لاستخدام الميزة المرتبطة به:</p>
+      <ul>
+        <li><strong>الميكروفون (<code>RECORD_AUDIO</code>):</strong> يُستخدم حصرياً عند ضغطك على زر الإملاء الصوتي لتحويل صوتك إلى نص قيد محاسبي. لا يتم تسجيل الصوت أو تخزينه بعد تحويله لنص.</li>
+        <li><strong>الكاميرا (<code>CAMERA</code>) والاتصال القريب (<code>NFC</code>):</strong> يُستخدمان حصرياً عند فتح نافذة «إقران الأجهزة» لمسح رمز الاستجابة السريعة (QR) أو تقريب الهاتفين لمطابقة القيود المشتركة بينك وبين طرف آخر مباشرة بدون إنترنت.</li>
+        <li><strong>البصمة وقفل الشاشة (<code>USE_BIOMETRIC</code>):</strong> يُستخدم محلياً عبر نظام أندرويد للتحقق من هويتك عند تفعيل «قفل التطبيق» أو «التحقق قبل الحذف والنسخ». لا يقرأ التطبيق بياناتك الحيوية مطلقاً.</li>
+        <li><strong>الإشعارات (<code>POST_NOTIFICATIONS</code> و <code>RECEIVE_BOOT_COMPLETED</code>):</strong> لإرسال تذكيرات محلية بمواعيد استحقاق الديون والقيود الدورية التي ضبطتها في هاتفك.</li>
+        <li><strong>الإنترنت (<code>INTERNET</code>):</strong> المحرك المحاسبي يعمل بدون إنترنت؛ ويُستخدم هذا الإذن فقط إذا قمت طواعيةً بتفعيل ميزة الاتصال بمخدم الذكاء الاصطناعي المحلي الخاص بك.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>3. النسخ الاحتياطي، التفعيل، وحذف البيانات</h2>
+      <ul>
+        <li><strong>النسخ الاحتياطي المشفر:</strong> يمكنك تصدير نسخة احتياطية مشفرة بمعيار <code>AES-256-GCM</code> وحفظها في المكان الذي تختاره. كلمة مرور النسخة الاحتياطية لا تُحفظ لدينا ولا يمكننا استرجاعها إذا نسيتها.</li>
+        <li><strong>رمز الجهاز والتفعيل:</strong> يولّد التطبيق رمز جهاز مكوّناً من 12 حرفاً مشتقاً بتشفير أحادي الاتجاه (<code>SHA-512</code>) للتحقق من صلاحية رخصة التفعيل محلياً دون إرسال معرف هاتفك الخام إلى أي جهة.</li>
+        <li><strong>الحذف الفوري للبيانات:</strong> يمكنك حذف كافة بياناتك في أي لحظة من داخل التطبيق عبر: <em>الإعدادات ← النظام ← مسح كل البيانات</em>، أو عبر مسح بيانات التطبيق من إعدادات نظام الهاتف.</li>
+      </ul>
+    </div>
+
+    <div class="card en" lang="en">
+      <h2>Privacy Policy (English Summary for App Stores)</h2>
+      <p><strong>MoneyCode (com.moneycode.sovereign)</strong> is an offline-first personal and business accounting application. Your privacy and data sovereignty are our core architecture:</p>
+      <ul>
+        <li><strong>Zero Data Collection:</strong> All accounting entries, accounts, balances, attachments, and settings are stored strictly locally on your device (SQLite / IndexedDB). We do not operate cloud servers that collect, read, or transmit your financial records.</li>
+        <li><strong>Permissions Usage:</strong>
+          <ul>
+            <li><code>RECORD_AUDIO</code>: Used solely when you tap the microphone button for speech-to-text entry dictation.</li>
+            <li><code>CAMERA</code> &amp; <code>NFC</code>: Used solely during peer-to-peer offline device pairing (QR scan / NFC tap) to reconcile shared ledger entries.</li>
+            <li><code>USE_BIOMETRIC</code>: Used via Android system authentication to unlock the app or confirm sensitive actions locally.</li>
+            <li><code>POST_NOTIFICATIONS</code>: Used to display local due-date reminders on your device; lock-screen notifications hide sensitive names and amounts by default.</li>
+          </ul>
+        </li>
+        <li><strong>Data Deletion:</strong> Because all data resides solely on your device, you can permanently erase all data at any time via <em>Settings → System → Erase All Data (مسح كل البيانات)</em> or by uninstalling the app.</li>
+        <li><strong>Contact Us:</strong> For privacy inquiries or support, contact us via WhatsApp/Phone at <span dir="ltr">+967770550110</span> or <span dir="ltr">+96899323110</span>.</li>
+      </ul>
+    </div>
+  </main>
+  <footer>
+    © 2026 موني كود (MoneyCode) — طه الدقيل. جميع الحقوق محفوظة. | <a href="index.html">الصفحة الرئيسية</a> | <a href="terms.html">شروط الاستخدام</a> | <a href="delete-data.html">حذف البيانات</a>
+  </footer>
+</body>
+</html>
